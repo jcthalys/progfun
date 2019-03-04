@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 def abs(x: Double) = if (x < 0) -x else x
 
 def sqrt(x: Double) = {
@@ -7,6 +9,7 @@ def sqrt(x: Double) = {
   def improve(guess: Double) =
     (guess + x / guess) / 2
 
+  @tailrec
   def sqrtIter(guess: Double): Double =
     if (isGoodEnough(guess)) guess
     else sqrtIter(improve(guess))
@@ -20,13 +23,14 @@ sqrt(1.0e20)
 sqrt(1.0e50)
 
 // Euclid's implementation
+@tailrec
 def gcd(a: Int, b: Int): Int =
   if (b == 0) a else gcd(b, a % b)
 
 gcd(14, 21)
 
-
 def factorial(n: Int): Int =
   if (n == 0) 1 else n * factorial(n - 1)
 
 factorial(4)
+
